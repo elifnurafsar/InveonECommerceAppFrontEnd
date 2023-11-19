@@ -8,7 +8,9 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.2",
     "bootstrap": "^5.2.1",
+    "cors": "^2.8.5",
     "p-min-delay": "^4.0.1",
     "rating-star": "^1.1.0",
     "react": "^18.2.0",
@@ -48,6 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://localhost:5050"
+  }
 }

@@ -8,5 +8,9 @@ export const store = configureStore ( {
         products : productsReducer,
         user : userReducer,
         settings : settingsReducer
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, // Disable serializable check for async actions
+    })
 })

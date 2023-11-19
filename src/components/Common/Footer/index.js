@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import logo from '../../../assets/img/logo.png'
+import mylogo from '../../../assets/img/logo2.svg'
 import payment from '../../../assets/img/common/payment.png'
 import { Link } from 'react-router-dom'
 import Cookie from '../Cookie'
@@ -80,7 +81,7 @@ const Footer = () => {
                     <div className="row">
                         <div className="col-lg-4 col-md-12 col-sm-12 col-12">
                             <div className="footer_left_side">
-                                <Link to="/" ><img src={logo} alt="logo" /></Link>
+                                <Link to="/" ><img  style={{ width: "70px", height: "70px"}}  src={mylogo} alt="my basket"/></Link>
                                 <p>
                                     <strong>
                                         BT SHOP</strong> çok satıcılı bir B2C hızlı e-ticaret şirketidir. Şirket ağırlıklı olarak erkek,

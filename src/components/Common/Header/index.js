@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import svg from '../../../assets/img/svg/cancel.svg'
 import logoWhite from '../../../assets/img/logo-white.png'
+import mylogo from '../../../assets/img/logo2.svg'
 import svgsearch from '../../../assets/img/svg/search.svg'
 import Swal from 'sweetalert2'
 const Header = () => {
@@ -85,7 +86,7 @@ const Header = () => {
                                 <div className="col-12 d-flex align-items-center justify-content-between">
                                     <div className="header-logo">
                                         <div className="logo">
-                                            <Link to="/"><img src={logo} alt="logo" /></Link>
+                                            <Link to="/"><img  style={{ width: "70px", height: "70px"}}  src={mylogo} alt="my basket"/></Link>
                                         </div>
                                     </div>
                                     {/* Burası menüyü oluşturan bölüm */}
@@ -152,7 +153,7 @@ const Header = () => {
                                     <li>
                                         <Link to="/">
                                             <div className="logo">
-                                                <img src={logo} alt="logo" />
+                                                <img  style={{ width: "70px", height: "70px"}}  src={mylogo} alt="my basket"/>
                                             </div>
                                         </Link>
                                     </li>
@@ -215,7 +216,7 @@ const Header = () => {
 
                     <div className="mobile-contact-info">
                         <div className="logo">
-                            <Link to="/"><img src={logoWhite} alt="img" /></Link>
+                            <Link to="/"><img  style={{ width: "70px", height: "70px"}}  src={mylogo} alt="my basket"/></Link>
                         </div>
                         <address className="address">
                             <span>Addres: Beylikdüzü / İstanbul</span>
