@@ -5,16 +5,27 @@ import { useState } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react"
+import { useSelector, useDispatch }  from "react-redux";
+import { getProductByID } from "../../../app/Actions/Index";
 import { useParams } from 'react-router-dom';
 import { RatingStar } from "rating-star";
 
 const ProductDetailsTwo = () => {
     let dispatch = useDispatch();
-    let { productId } = useParams();
-    
-    dispatch({ type: "products/getProductById", payload: { productId } });
+    const productId = useParams();
+    const product_id = productId.id;
+
+    useEffect(() => {
+        console.log("UEEEEEFFFF");
+        dispatch(getProductByID(product_id));
+    }, []);
+
     let product = useSelector((state) => state.products.single);
+    console.log("MY PRODUCT: ", product);
+    
+    /*dispatch({ type: "products/getProductById", payload: { productId } });
+    let product = useSelector((state) => state.products.single);*/
 
     // Add to cart
     const addToCart = async (id) => {
@@ -88,7 +99,7 @@ const ProductDetailsTwo = () => {
                                         <RatingStar maxScore={5} rating={5} id="rating-star-common-2" />
                                         <span>({123} Müşteri Yorumları)</span>
                                     </div>
-                                    <h4>{product.price}.00 TL <del>{parseInt(product.price) + 17}.00 TL</del> </h4>
+                                    <h4>{product.price}.00 TL <del>{parseInt(product.price) + 20}.00 TL</del> </h4>
                                     <p>{product.description}</p>
                                    
                                     

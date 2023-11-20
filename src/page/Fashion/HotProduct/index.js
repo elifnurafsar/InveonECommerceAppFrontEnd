@@ -1,7 +1,7 @@
 import Heading from "../Heading"
 import React, { useEffect } from "react"
 import { useSelector, useDispatch }  from "react-redux";
-import { getAllProducts } from "../../../app/Actions/Index";
+import { getAllProducts, getProductByID, getProductsByCategory } from "../../../app/Actions/Index";
 import ProductCard from "../../../components/Common/Product/ProductCard"; 
 
 const HotProduct = () => {
@@ -9,14 +9,37 @@ const HotProduct = () => {
     const dispatch = useDispatch();
     // Dispatch the action to fetch products when the component mounts
     useEffect(() => {
-        console.log("useeefect icindeyin")
         dispatch(getAllProducts());
+
+        // Dispatch the action to fetch products by category for 'healthy'
+        dispatch(getProductsByCategory('healthy'));
+    
+        // Dispatch the action to fetch products by category for 'snacks'
+        dispatch(getProductsByCategory('snack'));
+    
+        // Dispatch the action to fetch products by category for 'dessert'
+        dispatch(getProductsByCategory('dessert'));
+    
+        // Dispatch the action to fetch products by category for 'gluten_free'
+        dispatch(getProductsByCategory('gluten_free'));
+    
+        // Dispatch the action to fetch products by category for 'italian'
+        dispatch(getProductsByCategory('italian'));
+    
+        // Dispatch the action to fetch products by category for 'seasonal'
+        dispatch(getProductsByCategory('seasonal'));
     }, []);
 
    // dispatch(getAllProducts());
 
     const TumUrunler = useSelector((state) => state.products.products);
-
+    const healthy = useSelector((state) => state.products.healthy);
+    const snacks = useSelector((state) => state.products.snacks);
+    const dessert = useSelector((state) => state.products.dessert);
+    const gluten_free = useSelector((state) => state.products.gluten_free);
+    const italian = useSelector((state) => state.products.italian);
+    const seasonal = useSelector((state) => state.products.seasonal);
+  
     /*
     extraReducers: (builder) => {
         builder.addCase(fetchProducts.fulfilled, (state, action) => {
@@ -26,10 +49,7 @@ const HotProduct = () => {
             state.products = action.payload.data.result;
             console.log(action.payload.data.result)
         })
-        let diyetUrunler = [];
-        let snacks = [];
-        let italian = [];
-        let seasonal = [];
+        
     */
     return(
         <>
@@ -63,7 +83,7 @@ const HotProduct = () => {
                             </div>
                             <div id="trending" className="tab-pane fade">
                             <div className="row">
-                               {TumUrunler.slice(9,12).map((urun, index)=> (
+                               {snacks.map((urun, index)=> (
                                 <div className="col-lg-3 col-md-4 col-sm-6 col-12" key={index}>
                                     <ProductCard data={urun} />
                                     </div>
@@ -72,7 +92,7 @@ const HotProduct = () => {
                             </div>
                             <div id="best_sellers" className="tab-pane fade">
                             <div className="row">
-                               {TumUrunler.slice(5,10).map((urun,index)=> (
+                               {healthy.map((urun,index)=> (
                                 <div className="col-lg-3 col-md-4 col-sm-6 col-12" key={index}>
                                     <ProductCard data={urun} />
                                     </div>
@@ -81,7 +101,7 @@ const HotProduct = () => {
                             </div>
                             <div id="featured" className="tab-pane fade">
                             <div className="row">
-                               {TumUrunler.slice(12,15).map((urun,index)=> (
+                               {italian.map((urun,index)=> (
                                 <div className="col-lg-3 col-md-4 col-sm-6 col-12" key={index}>
                                     <ProductCard data={urun} />
                                     </div>

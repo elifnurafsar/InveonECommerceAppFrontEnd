@@ -21,7 +21,7 @@ const ProductCard = (props) => {
          <div className="product_wrappers_one">
             <div className="thumb">
                 <Link to={`/product-details-two/${props.data.productId}`} className="image">
-                    <img src={props.data.imageUrl} alt={props.data.name}></img>
+                    <img  src={props.data.imageUrl} alt={props.data.name}></img>
                     <img className="hover-image" src={props.data.imageUrl} alt={props.data.name} />
                 </Link>
                 <span className="badges">
