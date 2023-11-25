@@ -1,23 +1,41 @@
-import React from 'react'
+import {React, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import avater from '../../../assets/img/common/avater.png'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2';
+import userManager from '../../../userManager';
 
 const TopHeader = () => {
     let dispatch = useDispatch();
-    const history = useNavigate()
+    const history = useNavigate();
 
-    let status = useSelector((state) => state.user.status);
+    let status = false;
     let user = useSelector((state) => state.user.user);
+    if(user){
+        status = true;
+    }
+    //console.log("Status: ", useSelector((state) => state.user.status));
 
-    const cikisYap = () => {
-
+    const logout = () => {
         console.log("logouta tiklandi");
+        userManager.signoutRedirect({'id_token_hint': user.id_token});
+        userManager.removeUser();
+        user = { };
         dispatch({ type: "user/logout" })
         history("/");
     }
+
+    const login = async () => {
+        try {
+            await userManager.signinRedirect({
+                data: {path: "/"},
+            });
+          } catch (error) {
+            console.error('Error redirecting to login:', error);
+          }
+    };
+
     return (
         <>
             <section id="top_header">
@@ -33,11 +51,12 @@ const TopHeader = () => {
                                 {
                                     !status ?
                                         <ul className="right_list_fix">
-
-                                            <li><Link to="/login"><i className="fa fa-user"></i>
-                                                Giriş Yap</Link></li>
-                                            <li><Link to="/register"><i className="fa fa-lock"></i>
-                                                Kayıt Ol</Link></li>
+                                            <li>
+                                                <Link onClick={() => login()}><i className="fa fa-user"></i>Giriş Yap</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/register"><i className="fa fa-lock"></i>Kayıt Ol</Link>
+                                            </li>
                                         </ul>
                                         :
                                         <ul className="right_list_fix">
@@ -50,7 +69,7 @@ const TopHeader = () => {
                                                     </i> Panel</Link></li>
                                                     <li><Link to="/my-account/customer-order">
                                                         <i className="fa fa-cubes"></i> Siparişlerim</Link></li>
-                                                    <li><Link to="#!" onClick={() => { cikisYap() }} >
+                                                    <li><Link onClick={() => { logout() }} >
                                                         <i className="fa fa-sign-out"></i> Çıkış Yap</Link></li>
                                                 </ul>
                                             </li>

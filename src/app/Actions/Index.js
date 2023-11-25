@@ -12,7 +12,7 @@ export const getAllProducts = createAsyncThunk('products/getAllProducts', async 
 
 // Action to get products by category
 export const getProductsByCategory = createAsyncThunk('products/getProductsByCategory', async (categoryName) => {
-  console.log("Inside get products by category: ", categoryName);
+  //console.log("Inside get products by category: ", categoryName);
   try {
     const response = await axios.get(`https://localhost:5050/api/products/byCategory/${categoryName}`);
     //console.log("API Response:", response.data);
@@ -24,10 +24,10 @@ export const getProductsByCategory = createAsyncThunk('products/getProductsByCat
 });
 
 export const getProductByID = createAsyncThunk('products/getProductByID', async (productId) => {
-  console.log("Inside get products by id: ", productId);
+  //console.log("Inside get products by id: ", productId);
   try {
     const response = await axios.get(`https://localhost:5050/api/products/${productId}`);
-    console.log("API Response:", response.data);
+    //console.log("API Response:", response.data);
     return response.data;
   } catch (error) {
     console.error("API Error:", error);

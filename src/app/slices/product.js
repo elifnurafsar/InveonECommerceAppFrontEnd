@@ -57,7 +57,7 @@ const productsSlice = createSlice({
             .addCase(getAllProducts.pending, (state) => {
                 state.loading = true;
                 state.error = null;
-                console.log("*NULL STATE GET ALL*");
+                //console.log("*NULL STATE GET ALL*");
             })
             .addCase(getAllProducts.fulfilled, (state, action) => {
                 state.loading = false;
@@ -71,13 +71,13 @@ const productsSlice = createSlice({
             .addCase(getProductByID.pending, (state) => {
                 state.loading = true;
                 state.error = null;
-                console.log("*NULL STATE GET BY ID*");
+                //console.log("*NULL STATE GET BY ID*");
             })
             .addCase(getProductByID.fulfilled, (state, action) => {
                 state.loading = false;
-                console.log("payload ", action.payload);
+                //console.log("payload ", action.payload);
                 state.single = action.payload.result;
-                console.log("single ", state.single);
+                //console.log("single ", state.single);
             })
             .addCase(getProductByID.rejected, (state, action) => {
                 state.loading = false;
@@ -87,7 +87,7 @@ const productsSlice = createSlice({
             .addCase(getProductsByCategory.pending, (state) => {
                 state.loading = true;
                 state.error = null;
-                console.log("*NULL STATE GET BY CATEGORY*");
+                //console.log("*NULL STATE GET BY CATEGORY*");
             })
             .addCase(getProductsByCategory.fulfilled, (state, action) => {
                 /*state.loading = false;

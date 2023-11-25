@@ -17,12 +17,10 @@ const ProductDetailsTwo = () => {
     const product_id = productId.id;
 
     useEffect(() => {
-        console.log("UEEEEEFFFF");
         dispatch(getProductByID(product_id));
     }, []);
 
     let product = useSelector((state) => state.products.single);
-    console.log("MY PRODUCT: ", product);
     
     /*dispatch({ type: "products/getProductById", payload: { productId } });
     let product = useSelector((state) => state.products.single);*/
